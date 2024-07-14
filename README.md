@@ -1,14 +1,16 @@
 # SENAI Fullstack [Education]
 
-## Resolução dos exercícios da Semana 05 - Módulo 02 - Mini Projeto
+## Resolução dos exercícios da Semana 06 - Módulo 02 - Mini Projeto
 
-### Equipe:
+Essa é a continuação do mini-projeto feito na semana 5 pela equipe:
 
 - Bruno Miguel Corrêa
 - Cheryl Henkels de Souza
 - Gustavo Rafael dos Santos
 - João Victor de Souza Olivo
 - Scheila Stihler
+
+A seguinte versão foi realizada por Cheryl. E inclui o uso de localStorage e fetch() para a realização das ações feitas na parte 2 do projeto, além de uma tela de cadastro.
 
 ### M2S05 | Parte 2 do LabScore - Roteiro
 
