@@ -1,0 +1,29 @@
+{
+    "alunos": [
+      {
+        "id": 1,
+        "nome": "Charles Xavier",
+        "serie": "1ª Série"
+      },
+      {
+        "id": 2,
+        "nome": "Logan",
+        "serie": "2ª Série"
+      },
+      {
+        "id": 3,
+        "nome": "Jean Grey",
+        "serie": "3ª Série"
+      },
+      {
+        "id": 4,
+        "nome": "Scott Summers",
+        "serie": "4ª Série"
+      },
+      {
+        "id": 5,
+        "nome": "Kurt Wagner",
+        "serie": "6ª Série"
+      }
+    ]
+}

@@ -3,7 +3,7 @@ let listaNotas = [8, 10, 7, 5];
 
 function calculaMedia(notas) {
   let soma = 0;
-  for(let i=0; i<notas.length; i++){
+  for (let i = 0; i < notas.length; i++) {
     soma += notas[i]
   }
   let media = soma / notas.length;
@@ -149,11 +149,11 @@ function encontrarMaiorNumero(numeros) {
 // LabScore pt.2 - Exercício 4
 
 const botao = document.getElementById("add-notas");
-botao.addEventListener("click",  adicionarMateria);
+botao.addEventListener("click", adicionarMateria);
 
-function adicionarLinhaTabela(dadosMateria, media ){
-let tagTbody = document.querySelector("section.notas tbody");
-tagTbody.innerHTML += `
+function adicionarLinhaTabela(dadosMateria, media) {
+  let tagTbody = document.querySelector("section.notas tbody");
+  tagTbody.innerHTML += `
   <tr>
   <td>${dadosMateria.nome}</td>
   <td>${dadosMateria.nota1}</td>
@@ -163,8 +163,8 @@ tagTbody.innerHTML += `
   <td>${media}</td>
   </tr>
   `;
- // Atualização dos parãmetros ao adicionar linha
- acoesMediasMaterias();
+  // Atualização dos parãmetros ao adicionar linha
+  acoesMediasMaterias();
 }
 
 // LabScore pt.2 - Exercício 5 e 6
@@ -185,47 +185,47 @@ tagTbody.innerHTML += `
 
 
 // labscore pt3 - Exercício 2
-document.addEventListener('DOMContentLoaded', function() {
-document.getElementById('cep').addEventListener('blur', function() {
-  const cep = this.value.replace(/\D/g, '');
-  if (cep.length === 8) {
+document.addEventListener('DOMContentLoaded', function () {
+  document.getElementById('cep').addEventListener('blur', function () {
+    const cep = this.value.replace(/\D/g, '');
+    if (cep.length === 8) {
       fetch(`https://viacep.com.br/ws/${cep}/json/`)
-          .then(response => response.json())
-          .then(data => {
-              if (!data.erro) {
-                  document.getElementById('rua').value = data.logradouro;
-                  document.getElementById('cidade').value = data.localidade;
-                  document.getElementById('estado').value = data.uf;
-              } else {
-                  alert('CEP não encontrado!');
-              }
-          })
-          .catch(error => console.error('Erro ao buscar o CEP:', error));
-  } else {
+        .then(response => response.json())
+        .then(data => {
+          if (!data.erro) {
+            document.getElementById('rua').value = data.logradouro;
+            document.getElementById('cidade').value = data.localidade;
+            document.getElementById('estado').value = data.uf;
+          } else {
+            alert('CEP não encontrado!');
+          }
+        })
+        .catch(error => console.error('Erro ao buscar o CEP:', error));
+    } else {
       alert('CEP inválido!');
-  }
-});
+    }
+  });
 });
 
 // labscore pt3 - Exercício 3
 
-function saveLocalStorage(identification){
+function saveLocalStorage(identification) {
   let campo = document.getElementById(identification);
-  console.log(campo.id )
+  console.log(campo.id)
   localStorage.setItem(identification, JSON.stringify(campo.value));
 }
 
-function saveAllInfosLocalStorage(){
-saveLocalStorage("nome");
-saveLocalStorage("idade");
-saveLocalStorage("serie");
-saveLocalStorage("escola");
-saveLocalStorage("materia-favorita");
-saveLocalStorage("cep");
-saveLocalStorage("rua");
-saveLocalStorage("cidade");
-saveLocalStorage("estado");
-window.location.href = "index.html";
+function saveAllInfosLocalStorage() {
+  saveLocalStorage("nome");
+  saveLocalStorage("idade");
+  saveLocalStorage("serie");
+  saveLocalStorage("escola");
+  saveLocalStorage("materia-favorita");
+  saveLocalStorage("cep");
+  saveLocalStorage("rua");
+  saveLocalStorage("cidade");
+  saveLocalStorage("estado");
+  window.location.href = "index.html";
 }
 
 
@@ -244,19 +244,19 @@ function carregarMaterias() {
   let materiasCarregadas = JSON.parse(localStorage.getItem('materias')) || [];
   let tagTbody = document.querySelector("section.notas tbody");
   tagTbody.innerHTML = ''; // Limpa a tabela
-  
+
   materiasCarregadas.forEach((materia) => {
     let mediaMateria = calculaMedia([materia.nota1, materia.nota2, materia.nota3, materia.nota4]);
     adicionarLinhaTabela(materia, mediaMateria);
   });
- 
+
 }
 
 carregarMaterias();
 
-// labscore pt3 - Exercício 6
+// labscore pt3 - Exercício 6 e 7
 
-function acoesMediasMaterias(){
+function acoesMediasMaterias() {
   let materiasSalvasLocalStorage = JSON.parse(localStorage.getItem('materias')) || [];
 
   let listaMediasMaterias = [];
@@ -264,33 +264,23 @@ function acoesMediasMaterias(){
     let mediaMateria = calculaMedia([materia.nota1, materia.nota2, materia.nota3, materia.nota4]);
     listaMediasMaterias.push(mediaMateria);
   });
- 
+
   exibirMediaGeral(listaMediasMaterias);
   exibirMaiorMedia(listaMediasMaterias);
 
 }
 
-function exibirMediaGeral(listaMediasMaterias){
+function exibirMediaGeral(listaMediasMaterias) {
   const mediaGeral = calculaMedia(listaMediasMaterias);
   document.getElementById("media-geral").textContent = `A média geral do aluno é ${mediaGeral}`;
-  
+
 }
 
 
-function exibirMaiorMedia(listaMediasMaterias){
+function exibirMaiorMedia(listaMediasMaterias) {
   const maiorMedia = encontrarMaiorNumero(listaMediasMaterias);
 
   document.getElementById("maior-media").textContent = `A maior média entre as médias é ${maiorMedia}`;
 }
 
 
-
-
-
-// function calculaMediaMaterias(){
-//   let materiasLocalStorage = JSON.parse(localStorage.getItem('materias')) || [];
-//   let soma = 0;
-//   materiasLocalStorage.forEach(materia => {
-//     soma+=
-//   })
-// }
