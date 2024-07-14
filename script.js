@@ -284,3 +284,21 @@ function exibirMaiorMedia(listaMediasMaterias) {
 }
 
 
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  carregarAlunos();
+});
+
+function carregarAlunos() {
+  fetch('http://localhost:3000/alunos')
+    .then(response => response.json())
+    .then(data => {
+      const listaAlunos = document.querySelector("section.alunos ul");
+      data.forEach(aluno => {
+        const li = document.createElement('li');
+        li.textContent = aluno.nome;
+        listaAlunos.appendChild(li);
+      });
+    })
+    .catch(error => console.error('Erro ao carregar os alunos:', error));
+}
