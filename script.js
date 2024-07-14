@@ -72,7 +72,7 @@ function entrevistaAluno() {
 }
 
 /* LabScore pt.1 - Exercício 6 */
-let materiasMedia = [];
+//let materiasMedia = [];
 
 // function notasMateria() {
 //   let materia = window.prompt("Qual o nome da matéria?");
@@ -119,6 +119,7 @@ function adicionarMateria() {
   localStorage.setItem('materias', JSON.stringify(materias));
 
   adicionarLinhaTabela(novaMateria, calculaMedia([nota1, nota2, nota3, nota4]));
+
 }
 
 
@@ -162,23 +163,25 @@ tagTbody.innerHTML += `
   <td>${media}</td>
   </tr>
   `;
+ // Atualização dos parãmetros ao adicionar linha
+ acoesMediasMaterias();
 }
 
 // LabScore pt.2 - Exercício 5 e 6
 
-function exibirMediaGeral() {
-  const mediaGeral = calculaMedia(materiasMedia);
+// function exibirMediaGeral() {
+//   const mediaGeral = calculaMedia(materiasMedia);
 
-  document.getElementById("media-geral").textContent = `A média geral do aluno é ${mediaGeral}`;
-}
+//   document.getElementById("media-geral").textContent = `A média geral do aluno é ${mediaGeral}`;
+// }
 
 // LabScore pt.2 - Exercício 7
 
-function exibirMaiorMedia(){
-  const maiorMedia = encontrarMaiorNumero(materiasMedia);
+// function exibirMaiorMedia(){
+//   const maiorMedia = encontrarMaiorNumero(materiasMedia);
 
-  document.getElementById("maior-media").textContent = `A maior média entre as médias é ${maiorMedia}`;
-}
+//   document.getElementById("maior-media").textContent = `A maior média entre as médias é ${maiorMedia}`;
+// }
 
 
 // labscore pt3 - Exercício 2
@@ -241,11 +244,53 @@ function carregarMaterias() {
   let materiasCarregadas = JSON.parse(localStorage.getItem('materias')) || [];
   let tagTbody = document.querySelector("section.notas tbody");
   tagTbody.innerHTML = ''; // Limpa a tabela
-
+  
   materiasCarregadas.forEach((materia) => {
-    adicionarLinhaTabela(materia, calculaMedia([materia.nota1, materia.nota2, materia.nota3, materia.nota4]));
+    let mediaMateria = calculaMedia([materia.nota1, materia.nota2, materia.nota3, materia.nota4]);
+    adicionarLinhaTabela(materia, mediaMateria);
   });
+ 
+}
+
+carregarMaterias();
+
+// labscore pt3 - Exercício 6
+
+function acoesMediasMaterias(){
+  let materiasSalvasLocalStorage = JSON.parse(localStorage.getItem('materias')) || [];
+
+  let listaMediasMaterias = [];
+  materiasSalvasLocalStorage.forEach((materia) => {
+    let mediaMateria = calculaMedia([materia.nota1, materia.nota2, materia.nota3, materia.nota4]);
+    listaMediasMaterias.push(mediaMateria);
+  });
+ 
+  exibirMediaGeral(listaMediasMaterias);
+  exibirMaiorMedia(listaMediasMaterias);
+
+}
+
+function exibirMediaGeral(listaMediasMaterias){
+  const mediaGeral = calculaMedia(listaMediasMaterias);
+  document.getElementById("media-geral").textContent = `A média geral do aluno é ${mediaGeral}`;
+  
 }
 
 
-carregarMaterias();
+function exibirMaiorMedia(listaMediasMaterias){
+  const maiorMedia = encontrarMaiorNumero(listaMediasMaterias);
+
+  document.getElementById("maior-media").textContent = `A maior média entre as médias é ${maiorMedia}`;
+}
+
+
+
+
+
+// function calculaMediaMaterias(){
+//   let materiasLocalStorage = JSON.parse(localStorage.getItem('materias')) || [];
+//   let soma = 0;
+//   materiasLocalStorage.forEach(materia => {
+//     soma+=
+//   })
+// }
