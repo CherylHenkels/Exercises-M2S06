@@ -62,3 +62,34 @@ document.addEventListener('DOMContentLoaded', function() {
     //     // Redirecionar para a página de home do aluno
     //     window.location.href = "index.html";
     //   }
+
+      // labscore pt3 - Exercício 4
+
+      document.addEventListener("DOMContentLoaded", function() {
+        // let aluno = JSON.parse(localStorage.getItem("nome"));
+            document.getElementById("nome").textContent = JSON.parse(localStorage.getItem("nome"));
+            document.getElementById("idade").textContent = JSON.parse(localStorage.getItem("idade"));
+            document.getElementById("serie").textContent = JSON.parse(localStorage.getItem("serie"));
+            document.getElementById("escola").textContent = JSON.parse(localStorage.getItem("escola"));
+            document.getElementById("materia-favorita").textContent = JSON.parse(localStorage.getItem("materia-favorita"));
+            document.getElementById("cep").textContent = JSON.parse(localStorage.getItem("cep"));
+            document.getElementById("rua").textContent = JSON.parse(localStorage.getItem("rua"));
+            document.getElementById("cidade").textContent = JSON.parse(localStorage.getItem("cidade"));
+            document.getElementById("estado").textContent = JSON.parse(localStorage.getItem("estado"));
+        
+    });
+
+    // document.addEventListener("DOMContentLoaded", function() {
+    //     let aluno = JSON.parse(localStorage.getItem("aluno"));
+    //     if (aluno) {
+    //         document.getElementById("nome").textContent = aluno.nome;
+    //         document.getElementById("idade").textContent = aluno.idade;
+    //         document.getElementById("serie").textContent = aluno.serie;
+    //         document.getElementById("escola").textContent = aluno.escola;
+    //         document.getElementById("materia-favorita").textContent = aluno.materiaFavorita;
+    //         document.getElementById("cep").textContent = aluno.cep;
+    //         document.getElementById("rua").textContent = aluno.rua;
+    //         document.getElementById("cidade").textContent = aluno.cidade;
+    //         document.getElementById("estado").textContent = aluno.estado;
+    //     }
+    // });

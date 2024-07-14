@@ -3,8 +3,8 @@ let listaNotas = [8, 10, 7, 5];
 
 function calculaMedia(notas) {
   let soma = 0;
-  for (let i = 0; i < notas.length; i++) {
-    soma += notas[i];
+  for(let i=0; i<notas.length; i++){
+    soma += notas[i]
   }
   let media = soma / notas.length;
   return media;
@@ -74,30 +74,56 @@ function entrevistaAluno() {
 /* LabScore pt.1 - Exercício 6 */
 let materiasMedia = [];
 
-function notasMateria() {
-  let materia = window.prompt("Qual o nome da matéria?");
-  let notas = [];
-  let i = 0;
-  while (i < 4) {
-    let nota = parseFloat(window.prompt("Informe a nota " + (i + 1) + ":"));
-    notas.push(nota);
-    i++;
-  }
+// function notasMateria() {
+//   let materia = window.prompt("Qual o nome da matéria?");
+//   let notas = [];
+//   let i = 0;
+//   while (i < 4) {
+//     let nota = parseFloat(window.prompt("Informe a nota " + (i + 1) + ":"));
+//     notas.push(nota);
+//     i++;
+//   }
 
-  let dadosMateria = {
-    nomeMateria: materia,
-    notas: notas,
+// let dadosMateria = {
+//   nomeMateria: materia,
+//   notas: notas,
+// };
+
+// let media = calculaMedia(dadosMateria.notas);
+
+// materiasMedia.push(media);
+
+// adicionarLinhaTabela(dadosMateria,media);
+
+// exibirMediaGeral();
+// exibirMaiorMedia();
+// }
+
+function adicionarMateria() {
+  let nome = prompt("Qual o nome da matéria?");
+  let nota1 = parseFloat(prompt("Informe a nota 1:"));
+  let nota2 = parseFloat(prompt("Informe a nota 2:"));
+  let nota3 = parseFloat(prompt("Informe a nota 3:"));
+  let nota4 = parseFloat(prompt("Informe a nota 4:"));
+
+  let novaMateria = {
+    nome: nome,
+    nota1: nota1,
+    nota2: nota2,
+    nota3: nota3,
+    nota4: nota4
   };
 
-  let media = calculaMedia(dadosMateria.notas);
+  let materias = JSON.parse(localStorage.getItem('materias')) || [];
+  materias.push(novaMateria);
+  localStorage.setItem('materias', JSON.stringify(materias));
 
-  materiasMedia.push(media);
-
-  adicionarLinhaTabela(dadosMateria,media);
-
-  exibirMediaGeral();
-  exibirMaiorMedia();
+  adicionarLinhaTabela(novaMateria, calculaMedia([nota1, nota2, nota3, nota4]));
 }
+
+
+
+
 
 /* LabScore pt.1 - Exercício 7 */
 function encontrarMaiorNumero(numeros) {
@@ -122,17 +148,17 @@ function encontrarMaiorNumero(numeros) {
 // LabScore pt.2 - Exercício 4
 
 const botao = document.getElementById("add-notas");
-botao.addEventListener("click",  notasMateria);
+botao.addEventListener("click",  adicionarMateria);
 
 function adicionarLinhaTabela(dadosMateria, media ){
 let tagTbody = document.querySelector("section.notas tbody");
 tagTbody.innerHTML += `
   <tr>
-  <td>${dadosMateria.nomeMateria}</td>
-  <td>${dadosMateria.notas[0]}</td>
-  <td>${dadosMateria.notas[1]}</td>
-  <td>${dadosMateria.notas[2]}</td>
-  <td>${dadosMateria.notas[3]}</td>
+  <td>${dadosMateria.nome}</td>
+  <td>${dadosMateria.nota1}</td>
+  <td>${dadosMateria.nota2}</td>
+  <td>${dadosMateria.nota3}</td>
+  <td>${dadosMateria.nota4}</td>
   <td>${media}</td>
   </tr>
   `;
@@ -198,3 +224,28 @@ saveLocalStorage("cidade");
 saveLocalStorage("estado");
 window.location.href = "index.html";
 }
+
+
+// labscore pt3 - Exercício 5
+let materias = [
+  { nome: "Matemática", nota1: 8, nota2: 7, nota3: 9, nota4: 6 },
+  { nome: "Português", nota1: 7, nota2: 8, nota3: 6, nota4: 7 },
+  { nome: "Ciências", nota1: 9, nota2: 9, nota3: 8, nota4: 7 },
+  { nome: "História", nota1: 8, nota2: 8, nota3: 7, nota4: 7 }
+];
+
+// Salvar no localStorage
+localStorage.setItem('materias', JSON.stringify(materias));
+
+function carregarMaterias() {
+  let materiasCarregadas = JSON.parse(localStorage.getItem('materias')) || [];
+  let tagTbody = document.querySelector("section.notas tbody");
+  tagTbody.innerHTML = ''; // Limpa a tabela
+
+  materiasCarregadas.forEach((materia) => {
+    adicionarLinhaTabela(materia, calculaMedia([materia.nota1, materia.nota2, materia.nota3, materia.nota4]));
+  });
+}
+
+
+carregarMaterias();
