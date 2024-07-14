@@ -14,39 +14,14 @@
   </head>
   <body>
     <header>
-      <h1>Dados do Aluno</h1>
+      <h1>Cadastro do Aluno</h1>
     </header>
 
     <main>
-      <div class="content">
-        <section class="info">
-          <h2>Informações do Aluno</h2>
-          <ul>
-            <li>
-              <strong>Nome: </strong>
-              <span id="nome"></span>
-            </li>
-            <li>
-              <strong>Idade: </strong>
-              <span id="idade"></span>
-            </li>
-            <li>
-              <strong>Série: </strong>
-              <span id="serie"></span>
-            </li>
-            <li>
-              <strong>Escola: </strong>
-              <span id="escola"></span>
-            </li>
-            <li>
-              <strong>Matéria Favorita: </strong>
-              <span id="materia"></span>
-            </li>
-          </ul>
-        </section>
+
 
         <!-- <title>Formulário de Cadastro</title> -->
-         <!-- <div class="cadastro">
+        <div class="cadastro">
           <h2>Cadastro do Aluno</h1>
           <form>
               <div class="form-group">
@@ -94,54 +69,12 @@
                   <input type="text" id="estado" name="estado" disabled>
               </div>
       
-              <button onclick="saveAllInfosLocalStorage()"  class="btn">Cadastrar</button>
+              <button type="button" onclick="saveAllInfosLocalStorage()"   class="btn">Cadastrar</button>
           </form> 
-      </div>   -->
+      </div>  
 
-        <section class="notas">
-          <div class="top">
-            <h2>Notas das Matérias</h2>
-            <button id="add-notas">Adicionar Linha</button>
-          </div>
-          <table>
-            <thead>
-              <tr>
-                <th>Matéria</th>
-                <th>Nota 1</th>
-                <th>Nota 2</th>
-                <th>Nota 3</th>
-                <th>Nota 4</th>
-                <th>Média</th>
-              </tr>
-            </thead>
-            <tbody>
-            </tbody>
-          </table>
-
-          <div class="media">
-            <h3>Média Geral do Aluno</h3>
-            <p id="media-geral"></p>
-          </div>
-
-          <div class="media">
-            <h3>Maior Média entre as Matérias</h3>
-            <p id="maior-media"></p>
-          </div>
-        </section>
-
-        <section class="alunos">
-          <h2>Lista de Alunos</h2>
-          <ul>
-            <li>Bruno Miguel Corrêa</li>
-            <li>Cheryl Henkels de Souza</li>
-            <li>Gustavo Rafael dos Santos</li>
-            <li>João Victor de Souza Olivo</li>
-            <li>Scheila Stihler</li>
-          </ul>
-        </section>
-      </div>
     </main>
 
-    <script src="script.js"></script>
+    <script src="scriptCadastro.js"></script>
   </body>
 </html>

@@ -19,6 +19,48 @@ main {
   padding: 0 20px;
 }
 
+.cadastro {
+  background-color: white;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  max-width: 800px;
+  width: 100%;
+  margin: 40px auto;
+  padding: 10px 20px 10px;
+}
+
+.form-group{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+}
+
+.form-group label {
+  font-weight: bold; /* Make the labels bold */
+}
+
+.form-group input{
+  width: 50%;
+}
+
+.form-group input:disabled {
+  background-color: #e9ecef;
+}
+
+.cadastro .btn {
+  border: none;
+  border-radius: 6px;
+  background-color: lightslategrey;
+  margin-top: 10px;
+  padding: 10px 40px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.cadastro .btn:hover {
+  color: white;
+}
+
 .content {
   background-color: white;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -54,13 +96,14 @@ section h2 {
   border: none;
   border-radius: 6px;
   background-color: lightslategrey;
+  color: white;
   padding: 10px 40px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s;
 }
 .top button:hover {
-  color: white;
+  color: black;
 }
 table {
   margin-bottom: 24px;
